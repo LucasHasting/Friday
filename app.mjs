@@ -1,9 +1,11 @@
 import express from 'express'
 
-const app = express()
+const app = express();
+const PORT = 3000;
+const IP_ADD = '0.0.0.0'; //listen
 
 app.get('/', (req, res) => {
-  res.send('Hello Express')
+  res.send('Hello Express');
 })
 
-app.listen(3000)
+app.listen(PORT, IP_ADD);
