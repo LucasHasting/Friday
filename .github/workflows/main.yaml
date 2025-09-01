@@ -21,7 +21,7 @@ jobs:
           chmod 600 private_key.pem # Set the appropriate permissions for the key file
 
           # Establish an SSH connection and execute commands on the remote server
-          ssh -o StrictHostKeyChecking=no -i private_key.pem rebel@32.72.79.26 <<EOF  #CHANGE
+          ssh -o StrictHostKeyChecking=no -i private_key.pem -tt rebel@32.72.79.26 <<EOF  
             # Here Document, allows for multiple commands (like a script)
             pkill node #in case the website is currently running
             cd Friday #go to repo
