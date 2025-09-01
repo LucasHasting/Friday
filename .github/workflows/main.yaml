@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest # Run this job on the latest Ubuntu version
 
     steps:
-      - name: SSH - Start Friday
+      - name: Checkout
+        uses: actions/checkout@v2 # Check out your repository code
+
+      - name: Start Friday
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Reference the private key stored in GitHub Secrets
         run: |
