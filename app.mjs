@@ -5,7 +5,7 @@ const PORT = 3000;
 const IP_ADD = '0.0.0.0'; //all local addresses
 
 app.get('/', (req, res) => {
-  res.send('Hello Express! (this was pushed - for real this time)');
+  res.send('Hello Express! (this was pushed!)');
 })
 
 app.listen(PORT, IP_ADD);
