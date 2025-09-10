@@ -4,7 +4,7 @@ import express from 'express'
 
 const app = express();
 const PORT = 3000;
-const IP_ADD = '0.0.0.0'; //listen on all local addresses
+const IP_ADD = '127.0.0.1';
 
 app.get('/', (req, res) => {
   res.send('Hello Express! (this was pushed)');
