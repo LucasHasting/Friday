@@ -23,10 +23,10 @@ jobs:
           # Establish an SSH connection and execute commands on the remote server
           ssh -o StrictHostKeyChecking=no -i private_key.pem -tt rebel@34.72.79.26 <<EOF  
             # Here Document, allows for multiple commands while connectd to server 
-            pkill node #in case the website is currently running
+            pm2 stop app.mjs #in case the website is currently running
             cd Friday #go to repo  
             git pull #update repo
-            node app.mjs& #start the updated app
+            pm2 start app.mjs #start the updated app
             exit  
           EOF
 
