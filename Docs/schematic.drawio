@@ -1,0 +1,181 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="Deployment Diagram" id="deploymentDiagram1">
+    <mxGraphModel dx="1090" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FTll38E0-4E9iMJwobfp-13" value="Workstation" style="points=[[0.13,0.02,0],[0.5,0,0],[0.87,0.02,0],[0.885,0.4,0],[0.985,0.985,0],[0.5,1,0],[0.015,0.985,0],[0.115,0.4,0]];verticalLabelPosition=bottom;sketch=0;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.laptop;fillColor=#005073;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="331" width="80" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-14" value="User/Client" style="points=[[0.13,0.02,0],[0.5,0,0],[0.87,0.02,0],[0.885,0.4,0],[0.985,0.985,0],[0.5,1,0],[0.015,0.985,0],[0.115,0.4,0]];verticalLabelPosition=bottom;sketch=0;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.laptop;fillColor=#005073;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="604.75" width="96.43" height="67.5" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-16" value="Github" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="240" width="190" height="171" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-17" value="Pushes to repo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.07;entryY=0.4;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.875;exitY=0.161;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-13" target="FTll38E0-4E9iMJwobfp-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="340" />
+              <mxPoint x="225" y="308" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-20" value="Pulls from repo&amp;nbsp;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.975;entryY=0.643;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.121;exitY=0.719;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-16" target="FTll38E0-4E9iMJwobfp-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="313" y="366" />
+              <mxPoint x="225" y="366" />
+              <mxPoint x="225" y="367" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-23" value="Go Daddy&lt;div&gt;(Domain)&lt;/div&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="694.72" y="592.25" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-24" value="fridayoclock.com" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.1;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-14" target="FTll38E0-4E9iMJwobfp-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-25" value="Google Cloud" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="594.72" y="270" width="220" height="192" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-31" value="Connect to (on a push)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.095;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-16" target="FTll38E0-4E9iMJwobfp-25">
+          <mxGeometry x="-0.1359" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="326" />
+              <mxPoint x="560" y="364" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-33" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.109;entryY=0.583;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.768;exitY=0.83;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-16" target="FTll38E0-4E9iMJwobfp-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="401" as="sourcePoint" />
+            <mxPoint x="500" y="461" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-38" value="Pulls from repo (on a push)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="FTll38E0-4E9iMJwobfp-33">
+          <mxGeometry x="0.1468" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-41" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="690.72" y="387" width="28.000000000000004" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-42" value="Render" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="457.25" width="160" height="123.75" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-43" value="Pulls from repo (on a push)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.446;entryY=0.9;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.4;exitY=0.1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-42" target="FTll38E0-4E9iMJwobfp-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.07;entryY=0.4;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-14" target="FTll38E0-4E9iMJwobfp-42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="128" y="507" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-45" value="friday-l733.onrender.com" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="FTll38E0-4E9iMJwobfp-44">
+          <mxGeometry x="-0.4114" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-47" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+          <mxGeometry x="668.72" y="304" width="50" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-48" value="MongoDB Atlas" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="471" width="130" height="113.75" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-49" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+          <mxGeometry x="594.72" y="538" width="40.55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-50" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="249.78" y="531.5" width="20.44" height="36.5" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.07;entryY=0.4;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-42" target="FTll38E0-4E9iMJwobfp-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-53" value="Create, Update, Delete data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="FTll38E0-4E9iMJwobfp-52">
+          <mxGeometry x="0.0562" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-56" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.077;exitY=0.703;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-48">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="531" as="sourcePoint" />
+            <mxPoint x="330" y="552" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-57" value="Read data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="FTll38E0-4E9iMJwobfp-56">
+          <mxGeometry x="-0.0717" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-58" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" vertex="1" parent="1">
+          <mxGeometry x="110" y="341" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-59" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" vertex="1" parent="1">
+          <mxGeometry x="375" y="280" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-63" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="371" y="341" width="28.000000000000004" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-65" target="FTll38E0-4E9iMJwobfp-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-65" target="FTll38E0-4E9iMJwobfp-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-65" value="SSH Private Key" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="176.43" y="170" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-69" target="FTll38E0-4E9iMJwobfp-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-69" value="GitHub Pages (Documentation)" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="186.54" y="230" width="109.78" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-71" target="FTll38E0-4E9iMJwobfp-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-71" target="FTll38E0-4E9iMJwobfp-47">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="323" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-71" value="Mongo DB" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="739.44" y="516.38" width="75.28" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-74" target="FTll38E0-4E9iMJwobfp-50">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="456" />
+              <mxPoint x="370" y="588" />
+              <mxPoint x="260" y="588" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-74" target="FTll38E0-4E9iMJwobfp-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-74" value="fridayoclock website" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="420" y="441" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.55;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.25;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTll38E0-4E9iMJwobfp-23" target="FTll38E0-4E9iMJwobfp-25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="716" y="612" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTll38E0-4E9iMJwobfp-78" value="34.72.79.26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="FTll38E0-4E9iMJwobfp-77">
+          <mxGeometry x="-0.4495" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
