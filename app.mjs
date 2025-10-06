@@ -1,12 +1,12 @@
-//Source: https://superuser.com/questions/949428/whats-the-difference-between-127-0-0-1-and-0-0-0-0
+//libraries
 import 'dotenv/config'
 import express from 'express'
 import { MongoClient, ServerApiVersion } from 'mongodb'
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 const IP_ADD = '127.0.0.1';
-const uri = process.env.DEV_MONGO_URI;
+const uri = process.env.MONGO_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
