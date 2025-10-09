@@ -1,40 +1,33 @@
 //libraries
 import 'dotenv/config'
 import express from 'express'
-import { MongoClient, ServerApiVersion } from 'mongodb'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import user_route from './api/users.mjs';
 
+//setup app and database connection 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const IP_ADD = '127.0.0.1';
-const uri = process.env.MONGO_URI;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+app.use(express.static(join(__dirname, 'public')));
+app.use(express.json());
+
+//user api
+app.use('/api', user_route);
+
+app.get('/login', async (req, res) => {
+      res.sendFile(join(__dirname, 'views', 'login.html'));
 });
 
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
+app.get('/account', async (req, res) => {
+      res.sendFile(join(__dirname, 'views', 'account.html'));
+});
 
-
-
-app.get('/', (req, res) => {
-  res.send('Hello Express! (this was pushed)');
-})
+app.get('/auth', async (req, res) => {
+      res.sendFile(join(__dirname, 'scripts', 'auth.js'));
+});
 
 app.listen(PORT, IP_ADD);
