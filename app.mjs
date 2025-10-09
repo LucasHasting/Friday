@@ -18,6 +18,10 @@ app.use(express.json());
 //user api
 app.use('/api', user_route);
 
+app.get('/', async (req, res) => {
+      res.redirect(join('/login'));
+});
+
 app.get('/login', async (req, res) => {
       res.sendFile(join(__dirname, 'views', 'login.html'));
 });
