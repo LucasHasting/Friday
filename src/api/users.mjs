@@ -61,7 +61,7 @@ router.post('/users', async (req, res) => {
     }
 
     // Hash Password
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
     const password_hashed = await bcrypt.hash(password, salt);
     // Check if username exists, return error if so
     const user_possible = {username: username};
@@ -72,7 +72,7 @@ router.post('/users', async (req, res) => {
     }
 
     // Add user to the database
-    const user = { username: username, password: password_hashed, _id: new Date() };
+    const user = { username: username, password: password_hashed };
     await db.collection('users').insertOne(user);
     
     res.status(201).json({ message: 'User created successfully'});
@@ -91,7 +91,7 @@ router.post('/users/login', async (req, res) => {
       return res.status(400).json({ error: 'Name, and password are required' });
     }
 
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
     const password_hashed = await bcrypt.hash(password, salt);
 
     const user = { username: username };
