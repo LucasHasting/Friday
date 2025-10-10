@@ -1,4 +1,4 @@
 # Friday
 CIS 499 Demo App
 
-Now parked in <kbd>nodeDemo</kbd> branch
+Friday is WIP, for now, checkout the [source](./src/) and the [docs]().
