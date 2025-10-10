@@ -8,7 +8,7 @@ import user_route from './api/users.mjs';
 //setup app and database connection 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const IP_ADD = '127.0.0.1';
+const IP_ADD = process.env.IP_ADD;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
