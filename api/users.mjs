@@ -1,5 +1,4 @@
 import 'dotenv/config'
-//import pkg from 'bcrypt';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { MongoClient, ServerApiVersion } from 'mongodb';
@@ -19,16 +18,34 @@ const client = new MongoClient(uri, {
 
 // Keep the connection open for our CRUD operations
 let db;
+let isConnected = false;
 async function connectDB() {
+  if (isConnected) return db;
+
   try {
     await client.connect();
     db = client.db("users"); // Database name
+    isConnected = true;
     console.log("Connected to MongoDB!");
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
   }
 }
-connectDB();
+
+// Initialize connection
+connectDB().catch(console.error);
+
+// Middleware to ensure DB connection
+async function ensureDBConnection(req, res, next) {
+  try {
+    if (!isConnected) {
+      await connectDB();
+    }
+    next();
+  } catch (error) {
+    res.status(503).json({ error: 'Database connection unavailable' });
+  }
+}
 
 // JWT Middleware - Protect routes that require authentication
 function authenticateToken(req, res, next) {
@@ -50,7 +67,7 @@ function authenticateToken(req, res, next) {
 }
 
 // CREATE - Add (create) a new user 
-router.post('/users', async (req, res) => {
+router.post('/users', ensureDBConnection, async (req, res) => {
   try {
     const { username, password } = req.body;
     
@@ -81,7 +98,7 @@ router.post('/users', async (req, res) => {
 });
 
 // READ - Get a specefic user - used for sign in
-router.post('/users/login', async (req, res) => {
+router.post('/users/login', ensureDBConnection, async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -94,11 +111,7 @@ router.post('/users/login', async (req, res) => {
     const password_hashed = await bcrypt.hash(password, salt);
 
     const user = { username: username };
-    console.log(user);
-
     const user_result = await db.collection('users').findOne(user);
-
-    console.log(user_result);
 
     if (!user_result && !bcrypt.compare(password_hashed, user_result.password)) {
       return res.status(400).json({ error: 'User does not exist' });

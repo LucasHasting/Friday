@@ -1,37 +1,18 @@
-//libraries
+//libraries and APIs
 import 'dotenv/config'
 import express from 'express'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
 import user_route from './api/users.mjs';
+import file_route from './api/files.mjs';
 
-//setup app and database connection 
+//setup express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 const IP_ADD = process.env.IP_ADD;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-app.use(express.static(join(__dirname, 'public')));
 app.use(express.json());
 
-//user api
+//add routes
 app.use('/api', user_route);
+app.use('', file_route);
 
-app.get('/', async (req, res) => {
-      res.redirect(join('/login'));
-});
-
-app.get('/login', async (req, res) => {
-      res.sendFile(join(__dirname, 'views', 'login.html'));
-});
-
-app.get('/account', async (req, res) => {
-      res.sendFile(join(__dirname, 'views', 'account.html'));
-});
-
-app.get('/auth', async (req, res) => {
-      res.sendFile(join(__dirname, 'scripts', 'auth.js'));
-});
-
+//Bind to IP_ADD on PORT
 app.listen(PORT, IP_ADD);
