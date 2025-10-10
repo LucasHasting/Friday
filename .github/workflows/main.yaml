@@ -1,0 +1,34 @@
+#Sources: https://dev.to/aixart/simplifying-deployment-using-github-actions-and-ssh-for-quick-and-easy-updates-284j
+#         https://tldp.org/LDP/abs/html/here-docs.html
+#         https://github.com/rundeck/rundeck/issues/1655
+
+name:  Start Friday
+# Trigger this workflow on pushes to the specified branch
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Run this job on the latest Ubuntu version
+
+    steps:
+      - name: Start Friday
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Reference the private key stored in GitHub Secrets
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem # Write the private key to a file
+          chmod 600 private_key.pem # Set the appropriate permissions for the key file
+
+          # Establish an SSH connection and execute commands on the remote server
+          ssh -o StrictHostKeyChecking=no -i private_key.pem -tt rebel@34.72.79.26 <<EOF  
+            # Here Document, allows for multiple commands while connectd to server 
+            cd Friday/src #go to repo
+            npm i
+            pm2 stop app.mjs #in case the website is currently running
+            git pull #update repo
+            pm2 start app.mjs #start the updated app
+            exit  
+          EOF
+
+          rm -f private_key.pem # Remove the private key file after use for security
