@@ -25,7 +25,7 @@ jobs:
             # Here Document, allows for multiple commands while connectd to server 
             cd Friday/src #go to repo
             npm i
-            pm2 stop app.mjs #in case the website is currently running
+            pm2 delete app #in case the website is currently running
             git pull #update repo
             pm2 start app.mjs #start the updated app
             exit  
