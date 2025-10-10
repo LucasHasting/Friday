@@ -1,0 +1,31 @@
+{
+  "name": "friday",
+  "version": "1.0.0",
+  "description": "CIS 499 Demo App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasHasting/Friday.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LucasHasting/Friday/issues"
+  },
+  "homepage": "https://github.com/LucasHasting/Friday#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.20.0",
+    "node-localstorage": "^3.0.5",
+    "path": "^0.12.7",
+    "url": "^0.11.4"
+  }
+}
