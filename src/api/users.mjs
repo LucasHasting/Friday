@@ -61,7 +61,7 @@ router.post('/users', async (req, res) => {
     }
 
     // Hash Password
-    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
+    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
     const password_hashed = await bcrypt.hash(password, salt);
     // Check if username exists, return error if so
     const user_possible = {username: username};
@@ -91,7 +91,7 @@ router.post('/users/login', async (req, res) => {
       return res.status(400).json({ error: 'Name, and password are required' });
     }
 
-    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
+    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
     const password_hashed = await bcrypt.hash(password, salt);
 
     const user = { username: username };
