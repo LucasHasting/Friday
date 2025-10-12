@@ -91,13 +91,11 @@ router.post('/users/login', async (req, res) => {
       return res.status(400).json({ error: 'Name, and password are required' });
     }
 
-    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
-    const password_hashed = await bcrypt.hash(password, salt);
-
     const user = { username: username };
     const user_result = await db.collection('users').findOne(user);
+    console.log(await bcrypt.compare(password, user_result.password));
 
-    if (!user_result && ! (await bcrypt.compare(password_hashed, user_result.password))) {
+    if (!user_result || !(await bcrypt.compare(password, user_result.password))) {
       return res.status(400).json({ error: 'User does not exist' });
     }
 
@@ -105,72 +103,68 @@ router.post('/users/login', async (req, res) => {
       process.env.JWT_SECRET, { expiresIn: '24h' });
 
     const result = {username: user.username, token: token}
-    res.json(result); // respond with the user
+    res.status(201).json(result); // respond with the user
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch user: ' + error.message });
   }
 });
 
-/*
-// UPDATE - Update a user by id - used for reset password
-router.put('/users/:password', authenticateToken, async (req, res) => {
+// UPDATE - Update a user by username - used for reset password
+router.put('/users/', authenticateToken, async (req, res) => {
   try {
-    const { password } = req.params;
-    const { username } = req.body;
+    const { username, password, new_password } = req.body;
 
     // Simple validation
-    if (!password || !username) {
-      return res.status(400).json({ error: 'Name, and password are required' });
+    if (!username || !password || !new_password) {
+      return res.status(400).json({ error: 'Name, password, and new password are required' });
     }
 
-    // Hash new password
-    const password_hashed = bcrypt.hash(password);
+    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
+    const password_hashed = await bcrypt.hash(password, salt);
+    const new_password_hashed = await bcrypt.hash(new_password, salt);
 
-    const updateData = { username: username, password: password_hashed};
+    const user = { username: username };
+    const user_result = await db.collection('users').findOne(user);
 
-    const result = await db.collection('students').updateOne(
-      { username: username },
-      { $set: updateData }
-    );
-
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ error: 'User not found' });
+    if (!user_result && ! (await bcrypt.compare(password_hashed, user_result.password))) {
+      return res.status(400).json({ error: 'User does not exist or passwords do not match' });
     }
 
-    res.json({ 
-      message: 'User updated successfully',
-      modifiedCount: result.modifiedCount 
-    });
+    console.log(user_result);
+    user_result.password = new_password_hashed;
+    console.log(user_result);
+
+    await db.collection('users').replaceOne({username: username}, user_result);
+
+    res.status(201).json({ message: 'User updated successfully'});
   } catch (error) {
     res.status(500).json({ error: 'Failed to update user: ' + error.message });
   }
 });
 
-// DELETE - Delete a student by ID
-router.delete('/students/:id', authenticateToken, async (req, res) => {
+// UPDATE - Update a user by username - used for reset password
+router.delete('/users/', authenticateToken, async (req, res) => {
   try {
-    const { password } = req.params;
     const { username } = req.body;
 
     // Simple validation
-    if (!password || !username) {
-      return res.status(400).json({ error: 'Name, and password are required' });
+    if (!username) {
+      return res.status(400).json({ error: 'Name is required' });
     }
 
-    const result = await db.collection('users').deleteOne({ username: username });
+    const user = { username: username };
+    const user_result = await db.collection('users').findOne(user);
 
-    if (result.deletedCount === 0) {
-      return res.status(404).json({ error: 'Student not found' });
+    if (!user_result) {
+      return res.status(400).json({ error: 'User does not exist' });
     }
 
-    res.json({ 
-      message: 'Student deleted successfully',
-      deletedCount: result.deletedCount 
-    });
+    await db.collection('users').deleteOne({username: username});
+
+    res.status(201).json({ message: 'User deleted successfully'});
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete student: ' + error.message });
+    res.status(500).json({ error: 'Failed to delete user: ' + error.message });
   }
 });
-*/
 
 export default router;

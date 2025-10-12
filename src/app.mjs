@@ -1,6 +1,6 @@
 //libraries and APIs
-import 'dotenv/config'
-import express from 'express'
+import 'dotenv/config';
+import express from 'express';
 import user_route from './api/users.mjs';
 import file_route from './api/files.mjs';
 
