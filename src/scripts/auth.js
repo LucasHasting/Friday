@@ -14,6 +14,15 @@ function showMessage(message, type = 'info') {
     }, 5000);
 }
 
+// Logout User
+function logout() {        
+    console.log("TEST");
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('username');    
+
+    window.location.href = "/login";
+}
+
 //LOGIN PAGE
 if(window.location.href.indexOf("/login") != -1){
 
@@ -79,15 +88,70 @@ if(window.location.href.indexOf("/login") != -1){
 }
 
 //ACCOUNT PAGE
-if(window.location.href.indexOf("/account") != -1){
+else if(window.location.href.indexOf("/account") != -1){
     // Logout user
     document.getElementById('Logout').addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log("TEST");
-        
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem('username');    
 
-        window.location.href = "/login";
+        logout();
+    });
+
+    // Update user
+    document.getElementById('Update').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const password = document.getElementById('UpdatePassword').value;
+        const new_password = document.getElementById('UpdateNewPassword').value;
+        const token = localStorage.getItem('jwtToken');
+        const username = localStorage.getItem('username');
+        
+        try {
+            const response = await fetch('/api/users/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ username, password, new_password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                logout();
+            } else {
+                showMessage(`❌ Update failed: ${result.error}`, 'danger');
+            }
+        } catch (error) {
+            showMessage(`❌ Network error: ${error.message}`, 'danger');
+        }
+
+    });
+
+    // Delete user
+    document.getElementById('Delete').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('jwtToken');
+        const username = localStorage.getItem('username');
+
+        try {
+            const response = await fetch('/api/users/', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ username })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                logout();
+            } else {
+                showMessage(`❌ Delete failed: ${result.error}`, 'danger');
+            }
+        } catch (error) {
+            showMessage(`❌ Network error: ${error.message}`, 'danger');
+        }
     });
 }
