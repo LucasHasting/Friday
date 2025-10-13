@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import { Router } from 'express';
 
+// Setup router and MongoDB connection
 const router = Router();
 const uri = process.env.MONGO_URI;
 
@@ -63,6 +64,7 @@ router.post('/users', async (req, res) => {
     // Hash Password
     const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
     const password_hashed = await bcrypt.hash(password, salt);
+
     // Check if username exists, return error if so
     const user_possible = {username: username};
     const user_result = await db.collection('users').findOne(user_possible);
@@ -102,7 +104,7 @@ router.post('/users/login', async (req, res) => {
     const token = jwt.sign( {userId: user_result._id, username: user_result.username},
       process.env.JWT_SECRET, { expiresIn: '24h' });
 
-    const result = {username: user.username, token: token}
+    const result = {username: user.username, token: token};
     res.status(201).json(result); // respond with the user
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch user: ' + error.message });

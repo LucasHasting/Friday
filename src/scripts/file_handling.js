@@ -1,7 +1,6 @@
 const localStorage = window.localStorage;
 
-//HIDE EVERYTHING
-document.getElementById('hide').classList.add('hidden');
+//Everything is hidden by default
 
 //ACCOUNT
 if((localStorage.getItem("username")) && (window.location.href.indexOf("/account") === -1)){
