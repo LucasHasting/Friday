@@ -20,7 +20,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key.pem -tt rebel@34.72.79.26 <<EOF  
             # Here Document, allows for multiple commands while connectd to server 
             cd Friday/src #go to repo
-            npm i
+            npm ci
             pm2 delete app #in case the website is currently running
             git pull #update repo
             pm2 start app.mjs #start the updated app
