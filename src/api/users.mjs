@@ -79,7 +79,7 @@ router.post('/users', async (req, res) => {
     
     res.status(201).json({ message: 'User created successfully'});
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create user: ' + error.message });
+    res.status(500).json({ error: 'User already exists' });
   }
 });
 
@@ -95,7 +95,6 @@ router.post('/users/login', async (req, res) => {
 
     const user = { username: username };
     const user_result = await db.collection('users').findOne(user);
-    console.log(await bcrypt.compare(password, user_result.password));
 
     if (!user_result || !(await bcrypt.compare(password, user_result.password))) {
       return res.status(400).json({ error: 'User does not exist' });
@@ -107,7 +106,7 @@ router.post('/users/login', async (req, res) => {
     const result = {username: user.username, token: token};
     res.status(201).json(result); // respond with the user
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch user: ' + error.message });
+    res.status(500).json({ error: 'User does not exist' });
   }
 });
 
@@ -122,29 +121,26 @@ router.put('/users/', authenticateToken, async (req, res) => {
     }
 
     const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10));
-    const password_hashed = await bcrypt.hash(password, salt);
     const new_password_hashed = await bcrypt.hash(new_password, salt);
 
     const user = { username: username };
     const user_result = await db.collection('users').findOne(user);
 
-    if (!user_result && ! (await bcrypt.compare(password_hashed, user_result.password))) {
-      return res.status(400).json({ error: 'User does not exist or passwords do not match' });
+    if (!user_result || !(await bcrypt.compare(password, user_result.password))) {
+      return res.status(400).json({ error: 'Password is not correct' });
     }
 
-    console.log(user_result);
     user_result.password = new_password_hashed;
-    console.log(user_result);
 
     await db.collection('users').replaceOne({username: username}, user_result);
 
     res.status(201).json({ message: 'User updated successfully'});
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update user: ' + error.message });
+    res.status(500).json({ error: 'Password is not correct' });
   }
 });
 
-// UPDATE - Update a user by username - used for reset password
+// DELETE - Delete a user by username 
 router.delete('/users/', authenticateToken, async (req, res) => {
   try {
     const { username } = req.body;
@@ -165,7 +161,7 @@ router.delete('/users/', authenticateToken, async (req, res) => {
 
     res.status(201).json({ message: 'User deleted successfully'});
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete user: ' + error.message });
+    res.status(500).json({ error: 'Failed to delete user' });
   }
 });
 

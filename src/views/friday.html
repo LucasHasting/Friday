@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friday</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .auth-container {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .token-display {
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.8em;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="hide">
+    <div class="container">
+        <div class="auth-container">
+            <h1 class="text-center mb-4" id="Message">Welcome to Friday's Dashboard!</h1>
+
+            <!-- Alert Messages -->
+            <div id="messages"></div>
+
+            <!-- Upper Right Button - For logging in -->
+
+                <!-- Login Button -->
+                <form id="Login" action="login">
+                    <div class="d-flex justify-content-end p-3">
+                        <button type="submit" id = "login_button" class="btn btn-primary position-fixed top-0 end-0 m-3">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/dash"></script>
+</body>
+
+</html>
