@@ -9,7 +9,7 @@ const router = Router();
 
 //HTML FILES
 router.get('/', (req, res) => {
-      res.redirect('/login');
+      res.sendFile(join(__dirname, '../views', 'friday.html'));
 });
 
 router.get('/login', async (req, res) => {
@@ -27,6 +27,11 @@ router.get('/auth', async (req, res) => {
 
 router.get('/files', async (req, res) => {
       res.sendFile(join(__dirname, '../scripts', 'file_handling.js'));
+});
+
+//STYLE SHEET
+router.get('/style', async (req, res) => {
+      res.sendFile(join(__dirname, '../styles', 'style.css'));
 });
 
 export default router;

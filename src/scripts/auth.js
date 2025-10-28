@@ -16,11 +16,10 @@ function showMessage(message, type = 'info') {
 
 // Logout User
 function logout() {        
-    console.log("TEST");
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('username');    
 
-    window.location.href = "/login";
+    window.location.href = "/";
 }
 
 //LOGIN PAGE
@@ -77,7 +76,7 @@ if(window.location.href.indexOf("/login") != -1){
                 // Store token in localStorage
                 localStorage.setItem('jwtToken', result.token);
                 localStorage.setItem('username', result.username);
-                window.location.href = "/account";
+                window.location.href = "/";
             } else {
                 showMessage(`❌ Login failed: ${result.error}`, 'danger');
             }

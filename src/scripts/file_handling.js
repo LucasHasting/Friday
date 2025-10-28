@@ -6,8 +6,6 @@ const localStorage = window.localStorage;
 if((localStorage.getItem("username")) && (window.location.href.indexOf("/account") === -1)){
     window.location.href = "/account";
 } else if ((localStorage.getItem("username")) && window.location.href.indexOf("/account") != -1) {
-    document.getElementById('Message').innerHTML += " " + localStorage.getItem("username") + "!";
-    
     //UN-HIDE EVERYTHING
     document.getElementById('hide').classList.remove('hidden');
 
