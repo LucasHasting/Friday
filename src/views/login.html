@@ -29,6 +29,10 @@
                                 <input type="text" class="form-control" id="registerUsername" required>
                             </div>
                             <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="registerPassword" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="registerPassword" required minlength="6">
                                 <div class="form-text">Password must be at least 6 characters long</div>
@@ -57,6 +61,39 @@
                         </form>
                     </div>
                 </div>
+
+                <!-- Send OTP Button -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🔑 OTP</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="OTPForm">
+                            <div class="mb-3">
+                                <label for="loginEmailOTP" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="loginEmailOTP" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- OTP Login Form -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🔑 OTP Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="OTPLoginForm">
+                            <div class="mb-3">
+                                <label for="OTP" class="form-label">OTP</label>
+                                <input type="password" class="form-control" id="OTP" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </form>
+                    </div>
+                </div>
+
                 <!-- Go Back Button -->
                 <form id="back" action="/">
                     <div class="mt-3">
