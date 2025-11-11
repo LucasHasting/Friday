@@ -26,7 +26,7 @@ function modExp(base, exponent, modulus) {
 //function used to decrypt a character using RSA
 //d > 0 - important
 function decrypt_character(c){
-    let n = 5424487271082625687n;
+    let n = 2222694138841018691n;
     let d = BigInt(process.env.PRIVATE_KEY);
 
     let s = modExp(BigInt(c), d, n);

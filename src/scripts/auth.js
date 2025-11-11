@@ -19,8 +19,8 @@ function modExp(base, exponent, modulus) {
 //function used to encrypt a character using RSA encryption
 function encrypt_character(c){
     //public key
-    let n = 5424487271082625687n;  
-    let e = 2961270702444359377n;
+    let n = 2222694138841018691n;  
+    let e = 1837001105716858171n;
     let step = 20;
 
     //encrypt chacater
