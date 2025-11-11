@@ -29,6 +29,10 @@ router.get('/files', async (req, res) => {
       res.sendFile(join(__dirname, '../scripts', 'file_handling.js'));
 });
 
+router.get('/dash', async (req, res) => {
+      res.sendFile(join(__dirname, '../scripts', 'dashboard.js'));
+});
+
 //STYLE SHEET
 router.get('/style', async (req, res) => {
       res.sendFile(join(__dirname, '../styles', 'style.css'));
