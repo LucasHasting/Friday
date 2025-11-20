@@ -80,7 +80,6 @@ function sendOTP(OTP, email, res){
           subject: 'OTP',
           text: 'Hello, your OTP is ' + OTP,
         };
-    
         
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
