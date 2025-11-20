@@ -9,33 +9,33 @@ const router = Router();
 
 //HTML FILES
 router.get('/', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/views', 'friday.html'));
+      res.sendFile(join(__dirname, '../../public/views', 'friday.html'));
 });
 
 router.get('/login', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/views', 'login.html'));
+      res.sendFile(join(__dirname, '../../public/views', 'login.html'));
 });
 
 router.get('/account', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/views', 'account.html'));
+      res.sendFile(join(__dirname, '../../public/views', 'account.html'));
 });
 
 //JS FILES
 router.get('/auth', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/scripts', 'auth.js'));
+      res.sendFile(join(__dirname, '../../public/scripts', 'auth.js'));
 });
 
 router.get('/files', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/scripts', 'file_handling.js'));
+      res.sendFile(join(__dirname, '../../public/scripts', 'file_handling.js'));
 });
 
 router.get('/dash', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/scripts', 'dashboard.js'));
+      res.sendFile(join(__dirname, '../../public/scripts', 'dashboard.js'));
 });
 
 //STYLE SHEET
 router.get('/style', async (req, res) => {
-      res.sendFile(join(__dirname, '../../pages/styles', 'style.css'));
+      res.sendFile(join(__dirname, '../../public/styles', 'style.css'));
 });
 
 export default router;
