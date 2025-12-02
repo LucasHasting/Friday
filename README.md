@@ -2,7 +2,7 @@
 
 Course project for CIS 499, where is it friday?
 
-## File Structure
+## Folder Structure
 
 ```
 .github
