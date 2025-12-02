@@ -58,6 +58,6 @@ async function loadData() {
 };
 
 //wait for the time
-(async () => {
+(async function() {
     await loadData();
 })();
