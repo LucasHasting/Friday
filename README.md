@@ -1,5 +1,26 @@
 # Friday
 
-## Docs
+Course project for CIS 499, where is it friday?
 
-Friday is WIP, for now, checkout the [source](./src/) and the [docs](https://lucashasting.github.io/Friday/).
+## File Structure
+
+```
+.github
+│   └───workflows
+├───docs
+│   ├───infastructure
+│   │   
+│   └───wiki
+│       ├───fridayoclock-guide   
+│       └───render-guide
+├───public
+│   ├───scripts
+│   ├───styles
+│   └───views
+└───src
+    ├───api
+```
+
+## Production Diagram
+
+## Development Diagram
