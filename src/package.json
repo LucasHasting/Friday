@@ -24,12 +24,14 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "generate-password": "^1.7.1",
+    "jsdom": "^27.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.20.0",
     "node-localstorage": "^3.0.5",
     "nodemailer": "^7.0.10",
     "nodemon": "^3.1.11",
     "path": "^0.12.7",
-    "url": "^0.11.4"
+    "url": "^0.11.4",
+    "zero-md": "^3.1.7"
   }
 }

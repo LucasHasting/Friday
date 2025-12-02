@@ -8,7 +8,7 @@ import { Router } from 'express';
 
 
 //function used for modular exponentation - used to RSA decryption
-function modExp(base, exponent, modulus) {
+let modExp = (base, exponent, modulus) => {
   if (modulus === 1n) return 0; 
   let result = 1n;
   base %= modulus; 
@@ -25,7 +25,7 @@ function modExp(base, exponent, modulus) {
 
 //function used to decrypt a character using RSA
 //d > 0 - important
-function decrypt_character(c){
+let decrypt_character = (c) => {
     let n = 2222694138841018691n;
     let d = BigInt(process.env.PRIVATE_KEY);
 
@@ -34,7 +34,7 @@ function decrypt_character(c){
 }
 
 //function used to decrypt a JSON object using RSA
-function decrypt_json(data){
+let decrypt_json = (data) => {
     let step = 20;
 
     //parse data in JSON format
@@ -63,7 +63,7 @@ function decrypt_json(data){
     return decrypted;
 }
 
-function sendOTP(OTP, email, res){
+let sendOTP = (OTP, email, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -81,7 +81,7 @@ function sendOTP(OTP, email, res){
           text: 'Hello, your OTP is ' + OTP,
         };
         
-        transporter.sendMail(mailOptions, function (error, info) {
+        transporter.sendMail(mailOptions,  (error, info) => {
           if (error) {
             console.error('Error:', error);
           } else {
@@ -112,7 +112,7 @@ const client = new MongoClient(uri, {
 
 // Keep the connection open for our CRUD operations
 let db;
-async function connectDB() {
+let connectDB = async () => {
   try {
     await client.connect();
     db = client.db("users"); // Database name
@@ -126,7 +126,7 @@ async function connectDB() {
 connectDB();
 
 // JWT Middleware - Protect routes that require authentication
-function authenticateToken(req, res, next) {
+let authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 

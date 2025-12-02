@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import user_route from './api/users.mjs';
 import file_route from './api/files.mjs';
+import friday_route from './api/friday.mjs';
 
 //setup express app
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 //add routes
 app.use('/api', user_route);
+app.use('/friday', friday_route);
 app.use('', file_route);
 
 //Bind to IP_ADD on PORT
