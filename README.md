@@ -20,7 +20,3 @@ Course project for CIS 499, where is it friday?
 └───src
     ├───api
 ```
-
-## Production Diagram
-
-## Development Diagram
