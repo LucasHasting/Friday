@@ -20,3 +20,9 @@ Course project for CIS 499, where is it friday?
 └───src
     ├───api
 ```
+
+## Production Diagram
+![production](https://github.com/LucasHasting/Friday/tree/main/docs/infastructure/images/production.v1.png)
+
+## Development Diagram
+![development](https://github.com/LucasHasting/Friday/tree/main/docs/infastructure/images/development.v1.png)

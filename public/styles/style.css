@@ -16,3 +16,10 @@
 .hidden {
     display: none;
 }
+
+zero-md {
+      font-family: sans-serif;
+      display: block;
+      margin: 20px auto;
+      max-width: 700px;
+}
