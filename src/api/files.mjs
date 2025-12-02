@@ -20,6 +20,10 @@ router.get('/account', async (req, res) => {
       res.sendFile(join(__dirname, '../../public/views', 'account.html'));
 });
 
+router.get('/docs', async (req, res) => {
+      res.sendFile(join(__dirname, '../../public/views', 'docs.html'));
+});
+
 //JS FILES
 router.get('/auth', async (req, res) => {
       res.sendFile(join(__dirname, '../../public/scripts', 'auth.js'));
